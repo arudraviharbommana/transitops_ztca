@@ -1,0 +1,3231 @@
+[
+  {
+    "timestamp": "2026-08-25T17:42:26.426Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "BLOCK",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "SIMULATION FORCED BLOCK: Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "SIMULATION_FORCED_BLOCK",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:42:26.425Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679746430_3883"
+  },
+  {
+    "timestamp": "2026-08-25T17:42:24.438Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 60,
+      "level": "HIGH",
+      "factors": [
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 60,
+      "riskLevel": "HIGH",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (60) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:42:24.437Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679744446_4052"
+  },
+  {
+    "timestamp": "2026-08-25T17:42:14.276Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "BLOCK",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "SIMULATION FORCED BLOCK: Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "SIMULATION_FORCED_BLOCK",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:42:14.276Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679734281_3698"
+  },
+  {
+    "timestamp": "2026-08-25T17:42:14.236Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "BLOCK",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "SIMULATION FORCED BLOCK: Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "SIMULATION_FORCED_BLOCK",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:42:14.235Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679734240_2482"
+  },
+  {
+    "timestamp": "2026-08-25T17:37:01.676Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:37:01.675Z",
+      "simulation": true
+    },
+    "id": "ztca_1787679421680_2722"
+  },
+  {
+    "timestamp": "2026-08-25T17:37:01.642Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:37:01.642Z",
+      "simulation": true
+    },
+    "id": "ztca_1787679421646_2809"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:44.952Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "BLOCK",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "SIMULATION FORCED BLOCK: Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "SIMULATION_FORCED_BLOCK",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:44.952Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679404954_8669"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:39.743Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:39.743Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679399746_8078"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:39.693Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:39.693Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679399697_6377"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:29.912Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:29.911Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679389915_8128"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:29.873Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:29.872Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1787679389880_7226"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:17.471Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:17.470Z",
+      "simulation": true
+    },
+    "id": "ztca_1787679377476_4161"
+  },
+  {
+    "timestamp": "2026-08-25T17:36:17.413Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:36:17.413Z",
+      "simulation": true
+    },
+    "id": "ztca_1787679377416_1270"
+  },
+  {
+    "timestamp": "2026-08-25T17:23:29.739Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:23:29.739Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678609741_3876"
+  },
+  {
+    "timestamp": "2026-08-25T17:23:27.182Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 60,
+      "level": "HIGH",
+      "factors": [
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 60,
+      "riskLevel": "HIGH",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (60) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:23:27.181Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678607184_4694"
+  },
+  {
+    "timestamp": "2026-08-25T17:22:41.776Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:22:41.776Z"
+    },
+    "id": "ztca_1787678561779_5765"
+  },
+  {
+    "timestamp": "2026-08-25T17:22:41.746Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:22:41.746Z"
+    },
+    "id": "ztca_1787678561747_7685"
+  },
+  {
+    "timestamp": "2026-08-25T17:17:27.360Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:17:27.360Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678247362_646"
+  },
+  {
+    "timestamp": "2026-08-25T17:16:59.140Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:16:59.139Z"
+    },
+    "id": "ztca_1787678219144_3980"
+  },
+  {
+    "timestamp": "2026-08-25T17:16:59.111Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:16:59.110Z"
+    },
+    "id": "ztca_1787678219114_5244"
+  },
+  {
+    "timestamp": "2026-08-25T17:16:48.599Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:16:48.599Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678208602_8229"
+  },
+  {
+    "timestamp": "2026-08-25T17:16:48.563Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:16:48.563Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678208566_9380"
+  },
+  {
+    "timestamp": "2026-08-25T17:16:38.539Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:16:38.538Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678198541_7702"
+  },
+  {
+    "timestamp": "2026-08-25T17:16:38.497Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:16:38.497Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787678198499_1147"
+  },
+  {
+    "timestamp": "2026-08-25T17:09:15.074Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 80,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 80,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (80) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:09:15.074Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677755076_766"
+  },
+  {
+    "timestamp": "2026-08-25T17:08:55.468Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:08:55.468Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677735471_3049"
+  },
+  {
+    "timestamp": "2026-08-25T17:08:45.238Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "London",
+      "country": "United Kingdom",
+      "lat": 51.5074,
+      "lng": -0.1278,
+      "isKnownLocation": false,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 65,
+      "level": "HIGH",
+      "factors": [
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'London, United Kingdom', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 65,
+      "riskLevel": "HIGH",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (65) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'London, United Kingdom', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:08:45.238Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677725240_8330"
+  },
+  {
+    "timestamp": "2026-08-25T17:08:25.421Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:08:25.420Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677705423_9244"
+  },
+  {
+    "timestamp": "2026-08-25T17:08:24.518Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 60,
+      "level": "HIGH",
+      "factors": [
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 60,
+      "riskLevel": "HIGH",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (60) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:08:24.518Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677704520_6029"
+  },
+  {
+    "timestamp": "2026-08-25T17:07:56.449Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 100,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 100,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (100) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:07:56.449Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677676450_317"
+  },
+  {
+    "timestamp": "2026-08-25T17:07:36.590Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:07:36.589Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677656591_2711"
+  },
+  {
+    "timestamp": "2026-08-25T17:07:36.575Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Driver"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 45,
+      "level": "MEDIUM",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 45,
+      "riskLevel": "MEDIUM",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (45) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        },
+        {
+          "ruleId": "rf_privilege_mismatch",
+          "name": "Elevated Privilege Access Attempt",
+          "score": 25,
+          "description": "User role 'Driver' attempting administrative or financial action 'Dispatching Fleet Trip'."
+        }
+      ],
+      "timestamp": "2026-08-25T17:07:36.574Z",
+      "stepUpChallenge": "VERIFY_PIN"
+    },
+    "id": "ztca_1787677656576_7927"
+  },
+  {
+    "timestamp": "2026-08-25T17:07:31.379Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:07:31.379Z"
+    },
+    "id": "ztca_1787677651381_2776"
+  },
+  {
+    "timestamp": "2026-08-25T17:07:31.348Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:07:31.347Z"
+    },
+    "id": "ztca_1787677651350_5580"
+  },
+  {
+    "timestamp": "2026-08-25T17:05:16.920Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:05:16.920Z"
+    },
+    "id": "ztca_1787677516922_820"
+  },
+  {
+    "timestamp": "2026-08-25T17:05:16.874Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T17:05:16.874Z"
+    },
+    "id": "ztca_1787677516878_30"
+  },
+  {
+    "timestamp": "2026-08-25T16:56:41.396Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:56:41.395Z"
+    },
+    "id": "ztca_1787677001398_2864"
+  },
+  {
+    "timestamp": "2026-08-25T16:56:41.386Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:56:41.385Z"
+    },
+    "id": "ztca_1787677001387_8792"
+  },
+  {
+    "timestamp": "2026-08-25T16:56:31.454Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:56:31.453Z"
+    },
+    "id": "ztca_1787676991456_8153"
+  },
+  {
+    "timestamp": "2026-08-25T16:56:31.406Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:56:31.405Z"
+    },
+    "id": "ztca_1787676991408_9790"
+  },
+  {
+    "timestamp": "2026-08-25T16:55:38.368Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:55:38.367Z"
+    },
+    "id": "ztca_1787676938370_6883"
+  },
+  {
+    "timestamp": "2026-08-25T16:55:38.340Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:55:38.339Z"
+    },
+    "id": "ztca_1787676938343_6237"
+  },
+  {
+    "timestamp": "2026-08-25T16:54:10.653Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:54:10.652Z"
+    },
+    "id": "ztca_1787676850654_3087"
+  },
+  {
+    "timestamp": "2026-08-25T16:54:10.619Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:54:10.619Z"
+    },
+    "id": "ztca_1787676850621_8803"
+  },
+  {
+    "timestamp": "2026-08-25T16:53:55.892Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:53:55.891Z"
+    },
+    "id": "ztca_1787676835894_1013"
+  },
+  {
+    "timestamp": "2026-08-25T16:53:55.835Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-08-25T16:53:55.834Z"
+    },
+    "id": "ztca_1787676835836_1652"
+  }
+]

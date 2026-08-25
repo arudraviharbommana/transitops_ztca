@@ -1,0 +1,42 @@
+[
+  {
+    "id": "d1",
+    "name": "Alex Carter",
+    "licenseNumber": "DL-9948271",
+    "licenseCategory": "Class B",
+    "licenseExpiryDate": "2026-12-15",
+    "contactNumber": "555-0192",
+    "safetyScore": 95,
+    "status": "On Trip"
+  },
+  {
+    "id": "d2",
+    "name": "James Henderson",
+    "licenseNumber": "DL-1184930",
+    "licenseCategory": "Class A",
+    "licenseExpiryDate": "2026-07-20",
+    "contactNumber": "555-0143",
+    "safetyScore": 88,
+    "status": "Available"
+  },
+  {
+    "id": "d4",
+    "name": "Taylor Reynolds",
+    "licenseNumber": "DL-4819203",
+    "licenseCategory": "Class C",
+    "licenseExpiryDate": "2027-03-04",
+    "contactNumber": "555-0128",
+    "safetyScore": 99,
+    "status": "Off Duty"
+  },
+  {
+    "id": "d5",
+    "name": "Michael Miller",
+    "licenseNumber": "DL-7729103",
+    "licenseCategory": "Class B",
+    "licenseExpiryDate": "2026-08-28",
+    "contactNumber": "555-0177",
+    "safetyScore": 65,
+    "status": "Available"
+  }
+]
