@@ -5,7 +5,8 @@
     "description": "Brake pad replacement and wheel alignment",
     "cost": 450,
     "startDate": "2026-07-09",
-    "status": "Active"
+    "status": "Closed",
+    "endDate": "2026-09-02"
   },
   {
     "id": "m2",

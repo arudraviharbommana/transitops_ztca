@@ -30,7 +30,7 @@ async function startServer() {
   if (process.env.NODE_ENV === 'production') {
     const distPath = path.resolve(process.cwd(), 'dist');
     app.use(express.static(distPath));
-    app.get('*', (req, res) => {
+    app.get('/{*splat}', (req, res) => {
       res.sendFile(path.resolve(distPath, 'index.html'));
     });
   } else {
@@ -42,7 +42,7 @@ async function startServer() {
 
     app.use(vite.middlewares);
 
-    app.use('*', async (req, res, next) => {
+    app.use(async (req, res, next) => {
       const url = req.originalUrl;
       try {
         let template = fs.readFileSync(path.resolve(process.cwd(), 'index.html'), 'utf-8');

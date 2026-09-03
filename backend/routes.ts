@@ -449,7 +449,7 @@ router.put('/admin/policies/:id', (req: Request, res: Response) => {
   // Log policy change for audit and reflection in Admin Panel
   const actorName = (req.headers['x-ztca-user-name'] as string) || 'System';
   const actorId = (req.headers['x-ztca-user-id'] as string) || 'system';
-  const actorRole = (req.headers['x-ztca-user-role'] as string) || 'System';
+  const actorRole = ((req.headers['x-ztca-user-role'] as string) || 'System') as UserRole;
 
   ztcaAuditRepo.log({
     timestamp: new Date().toISOString(),
@@ -487,7 +487,7 @@ router.post('/admin/policies', (req: Request, res: Response) => {
   const newRule = ztcaPolicyRepo.create(req.body);
   const actorName = (req.headers['x-ztca-user-name'] as string) || 'System';
   const actorId = (req.headers['x-ztca-user-id'] as string) || 'system';
-  const actorRole = (req.headers['x-ztca-user-role'] as string) || 'System';
+  const actorRole = ((req.headers['x-ztca-user-role'] as string) || 'System') as UserRole;
 
   ztcaAuditRepo.log({
     timestamp: new Date().toISOString(),
@@ -531,7 +531,7 @@ router.delete('/admin/policies/:id', (req: Request, res: Response) => {
 
   const actorName = (req.headers['x-ztca-user-name'] as string) || 'System';
   const actorId = (req.headers['x-ztca-user-id'] as string) || 'system';
-  const actorRole = (req.headers['x-ztca-user-role'] as string) || 'System';
+  const actorRole = ((req.headers['x-ztca-user-role'] as string) || 'System') as UserRole;
 
   ztcaAuditRepo.log({
     timestamp: new Date().toISOString(),
@@ -580,7 +580,7 @@ router.put('/admin/devices/:id', (req: Request, res: Response) => {
   // Record audit entry for device status change (who trusted/revoked/flagged)
   const actorName = (req.headers['x-ztca-user-name'] as string) || 'System';
   const actorId = (req.headers['x-ztca-user-id'] as string) || 'system';
-  const actorRole = (req.headers['x-ztca-user-role'] as string) || 'System';
+  const actorRole = ((req.headers['x-ztca-user-role'] as string) || 'System') as UserRole;
 
   ztcaAuditRepo.log({
     timestamp: new Date().toISOString(),
@@ -684,7 +684,7 @@ router.put('/users/:id', (req: Request, res: Response) => {
   if (req.body.status && updated && req.body.status !== (existing as any).status) {
     const actorName = (req.headers['x-ztca-user-name'] as string) || 'System';
     const actorId = (req.headers['x-ztca-user-id'] as string) || 'system';
-    const actorRole = (req.headers['x-ztca-user-role'] as string) || 'System';
+    const actorRole = ((req.headers['x-ztca-user-role'] as string) || 'System') as UserRole;
 
     ztcaAuditRepo.log({
       timestamp: new Date().toISOString(),
@@ -822,31 +822,61 @@ router.get('/drivers', (req: Request, res: Response) => {
 });
 
 router.post('/drivers', (req: Request, res: Response) => {
-  const { name, licenseNumber, licenseCategory, licenseExpiryDate, contactNumber, safetyScore, userContext } = req.body;
-
-  if (!name || !licenseNumber || !licenseCategory || !licenseExpiryDate || !contactNumber || safetyScore === undefined) {
-    res.status(400).json({ error: 'All fields are required' });
-    return;
-  }
-
-  // Check unique license
-  const exists = driverRepo.getByLicense(licenseNumber);
-  if (exists) {
-    res.status(400).json({ error: `Driver with license number '${licenseNumber}' is already registered.` });
-    return;
-  }
-
-  const newDriver = driverRepo.create({
+  const {
     name,
     licenseNumber,
     licenseCategory,
     licenseExpiryDate,
     contactNumber,
+    safetyScore,
+    email,
+    age,
+    gender,
+    licenseAndId,
+    drivingExperience,
+    placeOfWorkCity,
+    cityVehicleType,
+    cityExperienceYears,
+    modeOfWork,
+    userContext
+  } = req.body;
+
+  if (!name || !licenseCategory || !licenseExpiryDate || !contactNumber || safetyScore === undefined) {
+    res.status(400).json({ error: 'Name, license category, expiry, contact, and safety score are required.' });
+    return;
+  }
+
+  const normalizedLicenseNumber = String(licenseNumber || '').trim();
+  const finalLicenseNumber = normalizedLicenseNumber || `DL-${Date.now()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+
+  if (normalizedLicenseNumber) {
+    const exists = driverRepo.getByLicense(normalizedLicenseNumber);
+    if (exists) {
+      res.status(400).json({ error: `Driver with license number '${normalizedLicenseNumber}' is already registered.` });
+      return;
+    }
+  }
+
+  const newDriver = driverRepo.create({
+    name,
+    email,
+    age: age !== undefined ? Number(age) : undefined,
+    gender,
+    licenseNumber: finalLicenseNumber,
+    licenseCategory,
+    licenseExpiryDate,
+    contactNumber,
     safetyScore: Number(safetyScore),
-    status: 'Available'
+    status: 'Available',
+    licenseAndId: licenseAndId || undefined,
+    drivingExperience: drivingExperience !== undefined ? Number(drivingExperience) : undefined,
+    placeOfWorkCity,
+    cityVehicleType,
+    cityExperienceYears: cityExperienceYears !== undefined ? Number(cityExperienceYears) : undefined,
+    modeOfWork
   });
 
-  activityRepo.create(`Registered driver ${name} (${licenseNumber}).`, userContext || 'Safety Officer');
+  activityRepo.create(`Registered driver ${name} (${finalLicenseNumber}).`, userContext || 'Safety Officer');
   auditDriverLicenses();
   res.status(201).json(newDriver);
 });
@@ -885,7 +915,7 @@ router.put('/drivers/:id', (req: Request, res: Response) => {
   if (status && updated && updated.status !== existing.status) {
     const actorName = (req.headers['x-ztca-user-name'] as string) || userContext || 'System';
     const actorId = (req.headers['x-ztca-user-id'] as string) || 'system';
-    const actorRole = (req.headers['x-ztca-user-role'] as string) || 'System';
+    const actorRole = ((req.headers['x-ztca-user-role'] as string) || 'System') as UserRole;
 
     const auditEntry = ztcaAuditRepo.log({
       timestamp: new Date().toISOString(),

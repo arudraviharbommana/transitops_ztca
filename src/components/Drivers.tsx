@@ -28,6 +28,97 @@ interface DriversProps {
   vehicles: any[];
 }
 
+interface DriverFileUploadProps {
+  id: string;
+  label: string;
+  value: string;
+  fileName: string;
+  onChange: (base64: string, name: string) => void;
+  onClear: () => void;
+}
+
+function DriverFileUpload({
+  id,
+  label,
+  value,
+  fileName,
+  onChange,
+  onClear
+}: DriverFileUploadProps) {
+  const [dragActive, setDragActive] = useState(false);
+
+  const handleFile = (file: File) => {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      onChange(reader.result as string, file.name);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  return (
+    <div className="space-y-1">
+      <label className="text-xs font-bold text-neutral-600">{label}</label>
+      {value ? (
+        <div className="flex items-center justify-between p-2 bg-emerald-50 border border-emerald-200 rounded-lg text-xs">
+          <span className="truncate max-w-[220px] text-emerald-800 font-medium flex items-center gap-1.5">
+            📎 {fileName || 'Uploaded Document'}
+          </span>
+          <button
+            type="button"
+            onClick={onClear}
+            className="text-[10px] font-bold text-red-600 hover:text-red-800"
+          >
+            Remove
+          </button>
+        </div>
+      ) : (
+        <div
+          onDragEnter={(e) => {
+            e.preventDefault();
+            setDragActive(true);
+          }}
+          onDragOver={(e) => {
+            e.preventDefault();
+            setDragActive(true);
+          }}
+          onDragLeave={(e) => {
+            e.preventDefault();
+            setDragActive(false);
+          }}
+          onDrop={(e) => {
+            e.preventDefault();
+            setDragActive(false);
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+              handleFile(e.dataTransfer.files[0]);
+            }
+          }}
+          onClick={() => document.getElementById(`${id}-input-file`)?.click()}
+          className={`relative border-2 border-dashed rounded-lg p-3 text-center cursor-pointer transition-colors ${
+            dragActive ? 'border-emerald-500 bg-emerald-50' : 'border-neutral-200 bg-white hover:bg-neutral-50'
+          }`}
+        >
+          <input
+            id={`${id}-input-file`}
+            type="file"
+            className="hidden"
+            accept="application/pdf,image/*,.doc,.docx"
+            onChange={(e) => {
+              if (e.target.files && e.target.files[0]) {
+                handleFile(e.target.files[0]);
+              }
+            }}
+          />
+          <div className="flex flex-col items-center justify-center gap-1 text-[11px] text-neutral-500">
+            <span className="font-bold text-emerald-600">Click to upload</span> or drag & drop
+            <span className="text-[9px] text-neutral-400">PDF, PNG, JPG, or DOC</span>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function Drivers({
   drivers,
   onAddDriver,
@@ -56,6 +147,7 @@ export default function Drivers({
   const [age, setAge] = useState('');
   const [gender, setGender] = useState('Male');
   const [licenseAndId, setLicenseAndId] = useState('');
+  const [licenseAndIdName, setLicenseAndIdName] = useState('');
   const [drivingExperience, setDrivingExperience] = useState('');
   const [placeOfWorkCity, setPlaceOfWorkCity] = useState('');
   const [cityVehicleType, setCityVehicleType] = useState('');
@@ -113,8 +205,8 @@ export default function Drivers({
     e.preventDefault();
     setFormError('');
 
-    if (!name || !licenseNum || !expiryDate || !contactNum || !safetyScore) {
-      setFormError('Name, license, expiry, contact, and safety score are required.');
+    if (!name || !expiryDate || !contactNum || !safetyScore) {
+      setFormError('Name, expiry, contact, and safety score are required.');
       return;
     }
 
@@ -124,10 +216,12 @@ export default function Drivers({
       return;
     }
 
+    const finalLicenseNumber = licenseNum.trim() || `DL-${Date.now()}-${Math.random().toString(36).slice(2, 8).toUpperCase()}`;
+
     const success = await onAddDriver({
       name: name.trim(),
       email: email.trim() || undefined,
-      licenseNumber: licenseNum.trim(),
+      licenseNumber: finalLicenseNumber,
       licenseCategory,
       licenseExpiryDate: expiryDate,
       contactNumber: contactNum.trim(),
@@ -154,6 +248,7 @@ export default function Drivers({
       setAge('');
       setGender('Male');
       setLicenseAndId('');
+      setLicenseAndIdName('');
       setDrivingExperience('');
       setPlaceOfWorkCity('');
       setCityVehicleType('');
@@ -161,7 +256,7 @@ export default function Drivers({
       setModeOfWork('Simple Loads');
       setIsAddOpen(false);
     } else {
-      setFormError('Failed to register driver. Driving license number must be unique.');
+      setFormError('Failed to register driver. Please check your values and try again.');
     }
   };
 
@@ -783,17 +878,20 @@ export default function Drivers({
                 </div>
               )}
 
-              <div className="space-y-1">
-                <label className="text-xs font-bold text-neutral-600">License & ID PDF / Image Reference</label>
-                <input
-                  id="driver-form-doc"
-                  type="text"
-                  placeholder="e.g., license_id_reference.pdf"
-                  value={licenseAndId}
-                  onChange={(e) => setLicenseAndId(e.target.value)}
-                  className="w-full px-3 py-2 border border-neutral-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
-                />
-              </div>
+              <DriverFileUpload
+                id="driver-form-license-upload"
+                label="License & ID PDF / Image"
+                value={licenseAndId}
+                fileName={licenseAndIdName}
+                onChange={(base64, name) => {
+                  setLicenseAndId(base64);
+                  setLicenseAndIdName(name);
+                }}
+                onClear={() => {
+                  setLicenseAndId('');
+                  setLicenseAndIdName('');
+                }}
+              />
 
               <div className="space-y-1">
                 <label className="text-xs font-bold text-neutral-600">Initial Safety Score (0-100)</label>

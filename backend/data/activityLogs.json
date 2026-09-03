@@ -178,5 +178,95 @@
     "action": "User Carlos Mendez logged in.",
     "user": "Carlos Mendez",
     "timestamp": "2026-08-25T17:42:14.185Z"
+  },
+  {
+    "id": "al_1788324557291_147",
+    "action": "User Alex Carter logged in.",
+    "user": "Alex Carter",
+    "timestamp": "2026-09-02T04:49:17.291Z"
+  },
+  {
+    "id": "al_1788324683958_764",
+    "action": "User ZTCA Admin (Super User) logged in.",
+    "user": "ZTCA Admin (Super User)",
+    "timestamp": "2026-09-02T04:51:23.958Z"
+  },
+  {
+    "id": "al_1788344284723_375",
+    "action": "User ZTCA Admin (Super User) logged in.",
+    "user": "ZTCA Admin (Super User)",
+    "timestamp": "2026-09-02T10:18:04.723Z"
+  },
+  {
+    "id": "al_1788344360700_573",
+    "action": "User Sarah Jenkins logged in.",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:19:20.700Z"
+  },
+  {
+    "id": "al_1788344859019_103",
+    "action": "Registered driver Test Driver (AS-332224).",
+    "user": "Fleet Manager",
+    "timestamp": "2026-09-02T10:27:39.019Z"
+  },
+  {
+    "id": "al_1788345827434_511",
+    "action": "Registered driver Jane Smith (DL-2026002).",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:43:47.434Z"
+  },
+  {
+    "id": "al_1788345866722_248",
+    "action": "User ZTCA Admin (Super User) logged in.",
+    "user": "ZTCA Admin (Super User)",
+    "timestamp": "2026-09-02T10:44:26.722Z"
+  },
+  {
+    "id": "al_1788345959186_599",
+    "action": "Registered vehicle Crux (Van-54).",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:45:59.186Z"
+  },
+  {
+    "id": "al_1788346027861_323",
+    "action": "Dispatched trip from chennai to hyderabad using Van-54 with driver Jane Smith.",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:47:07.861Z"
+  },
+  {
+    "id": "al_1788346084531_127",
+    "action": "User Alex Carter logged in.",
+    "user": "Alex Carter",
+    "timestamp": "2026-09-02T10:48:04.531Z"
+  },
+  {
+    "id": "al_1788346221734_240",
+    "action": "Logged fuel for vehicle Van-54: 43L, Cost: $43.",
+    "user": "Alex Carter",
+    "timestamp": "2026-09-02T10:50:21.734Z"
+  },
+  {
+    "id": "al_1788346382351_925",
+    "action": "Closed maintenance record #m1 for vehicle. Status restored to Available.",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:53:02.351Z"
+  },
+  {
+    "id": "al_1788346509583_907",
+    "action": "Completed trip #t_1788346027859_196 to hyderabad. Updated odometer to 3450 km, fuel consumed 40L.",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:55:09.583Z"
+  },
+  {
+    "id": "al_1788346536012_699",
+    "action": "User ZTCA Admin (Super User) logged in.",
+    "user": "ZTCA Admin (Super User)",
+    "timestamp": "2026-09-02T10:55:36.012Z"
+  },
+  {
+    "id": "al_1788346600077_395",
+    "action": "Updated driver profile for James Henderson.",
+    "user": "Sarah Jenkins",
+    "timestamp": "2026-09-02T10:56:40.077Z"
   }
 ]

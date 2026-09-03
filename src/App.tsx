@@ -26,6 +26,7 @@ import Reports from './components/Reports';
 import AdminPanel from './components/AdminPanel';
 import ZTCAContextWidget, { SimulatedContext, DEFAULT_CONTEXT_PRESETS } from './components/ZTCAContextWidget';
 import StepUpModal from './components/StepUpModal';
+import TrustCenter from './components/TrustCenter';
 
 import {
   User,
@@ -197,7 +198,7 @@ export default function App() {
 
   // Primary Navigation Tab
   const [activeTab, setActiveTab] = useState<
-    'Dashboard' | 'Vehicles' | 'Drivers' | 'Trips' | 'Maintenance' | 'Fuel' | 'Expenses' | 'Reports' | 'Admin'
+    'Dashboard' | 'Vehicles' | 'Drivers' | 'Trips' | 'Maintenance' | 'Fuel' | 'Expenses' | 'Reports' | 'Trust Center' | 'Admin'
   >('Dashboard');
 
   // ZTCA Simulation & Enforcement State
@@ -548,8 +549,19 @@ export default function App() {
         fetchAllData();
         return true;
       }
+
+      let apiError = 'Failed to register driver.';
+      try {
+        const errPayload = await res.json();
+        apiError = errPayload?.error || apiError;
+      } catch {
+        // ignore JSON parse errors and fall back to generic message
+      }
+
+      triggerToast(apiError, 'error');
       return false;
     } catch (e) {
+      triggerToast('Failed to register driver. Please check the backend response.', 'error');
       return false;
     }
   };
@@ -814,6 +826,8 @@ export default function App() {
         );
       case 'Admin':
         return <AdminPanel currentUser={currentUser} />;
+      case 'Trust Center':
+        return <TrustCenter currentUser={currentUser} context={simulatedContext} />;
       default:
         return <div>View not implemented.</div>;
     }
@@ -1896,6 +1910,7 @@ export default function App() {
               { id: 'Maintenance', label: 'Maintenance', icon: Wrench },
               { id: 'Expenses', label: 'Expenses & Fuel', icon: DollarSign },
               { id: 'Reports', label: 'Reports', icon: FileText },
+              { id: 'Trust Center', label: 'Trust Center', icon: ShieldCheck },
               ...(currentUser?.role === 'Admin'
                 ? [{ id: 'Admin', label: '🛡️ ZTCA Security Admin', icon: ShieldCheck }]
                 : [])

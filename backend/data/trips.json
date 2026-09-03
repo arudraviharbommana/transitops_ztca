@@ -76,5 +76,36 @@
     ],
     "id": "t_1787674734494_269",
     "createdAt": "2026-08-25T16:18:54.494Z"
+  },
+  {
+    "source": "chennai",
+    "destination": "hyderabad",
+    "vehicleId": "v_1788345959186_905",
+    "driverId": "d_1788345827431_811",
+    "cargoWeight": 1000,
+    "plannedDistance": 450,
+    "status": "Completed",
+    "odometerStart": 3000,
+    "tripType": "Per Trip",
+    "paymentStatus": "Pending",
+    "logs": [
+      {
+        "timestamp": "2026-09-02T10:47:07.859Z",
+        "status": "Dispatched",
+        "note": "Trip created in Dispatched state.",
+        "location": "chennai"
+      },
+      {
+        "timestamp": "2026-09-02T10:55:09.583Z",
+        "status": "Completed",
+        "note": "Safe arrival recorded at destination. Fuel used: 40L.",
+        "location": "hyderabad"
+      }
+    ],
+    "id": "t_1788346027859_196",
+    "createdAt": "2026-09-02T10:47:07.859Z",
+    "odometerEnd": 3450,
+    "fuelConsumed": 40,
+    "completedAt": "2026-09-02T10:55:09.583Z"
   }
 ]

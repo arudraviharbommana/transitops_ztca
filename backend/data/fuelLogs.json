@@ -32,5 +32,25 @@
     "driverId": "d2",
     "purpose": "On Trip",
     "id": "f_1787674547297_187"
+  },
+  {
+    "vehicleId": "v_1788345959186_905",
+    "liters": 43,
+    "cost": 43,
+    "date": "2026-09-02",
+    "odometer": 3000,
+    "driverId": "d1",
+    "purpose": "Trip Delivery",
+    "id": "f_1788346221734_526"
+  },
+  {
+    "vehicleId": "v_1788345959186_905",
+    "liters": 40,
+    "cost": 60,
+    "date": "2026-09-02",
+    "odometer": 3450,
+    "driverId": "d_1788345827431_811",
+    "purpose": "On Trip",
+    "id": "f_1788346509582_778"
   }
 ]

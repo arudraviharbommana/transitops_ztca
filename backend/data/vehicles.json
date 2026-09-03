@@ -40,7 +40,7 @@
     "maxLoadCapacity": 1500,
     "odometer": 92300,
     "acquisitionCost": 42000,
-    "status": "In Shop",
+    "status": "Available",
     "region": "South"
   },
   {
@@ -53,5 +53,16 @@
     "acquisitionCost": 24000,
     "status": "Retired",
     "region": "North"
+  },
+  {
+    "registrationNumber": "Van-54",
+    "name": "Crux",
+    "type": "Van",
+    "maxLoadCapacity": 1200,
+    "odometer": 3450,
+    "acquisitionCost": 23,
+    "status": "Available",
+    "region": "North",
+    "id": "v_1788345959186_905"
   }
 ]
