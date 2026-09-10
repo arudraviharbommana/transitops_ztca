@@ -24,13 +24,13 @@ const roles = [
 ];
 
 const policies = [
-  ['Admin area lockdown', 'Only Admin can reach security policy, audit, and device controls.', 'BLOCK'],
-  ['Dispatch Step-Up', 'Trip changes above the configured risk threshold require a verified PIN/MFA step.', 'STEP_UP'],
-  ['Fleet record protection', 'Vehicle and driver writes require a trusted device and acceptable context.', 'BLOCK'],
-  ['Financial Read-Only downgrade', 'Expense writes are restricted when the context becomes too risky.', 'READ_ONLY'],
-  ['Universal critical-risk cap', 'Requests at critical risk are stopped before reaching protected resources.', 'BLOCK'],
-  ['Least-privilege boundaries', 'Roles receive only the operational access needed for their responsibilities.', 'ROLE CHECK'],
-  ['Continuous authorization', 'Identity and context are evaluated on each protected request, not only at login.', 'EVERY REQUEST']
+  ['Verify explicitly', 'Never trust a request based only on a successful login; verify identity and the request context before granting access.', 'ZTCA middleware builds identity, device, location, time, endpoint, action, and privilege context for every protected API request.'],
+  ['Use least privilege', 'Give each person only the permissions required for their operational responsibility.', 'The role access matrix and endpoint privilege mapping restrict Admin, Fleet Manager, Driver, Safety Officer, and Financial Analyst actions.'],
+  ['Assume breach', 'Treat every request as if an attacker may already have access, and limit the impact of a compromised session.', 'The risk engine combines device, location, time, endpoint, and privilege signals, then blocks, challenges, or downgrades risky actions.'],
+  ['Continuous authorization', 'Re-evaluate access continuously instead of relying on a one-time decision at sign-in.', 'The middleware runs on each protected request and immediately blocks revoked sessions, rather than trusting a previously authenticated session.'],
+  ['Trust the device conditionally', 'A known device is a useful signal, but device trust must be checked alongside other context.', 'The device repository records trusted devices; unknown-device requests increase risk and can trigger Step-Up verification or a block.'],
+  ['Validate location and time', 'Use environmental signals to detect unusual access and apply adaptive controls.', 'Known-location records, geographic context, and the odd-hours signal feed the risk score and active policy conditions.'],
+  ['Protect resources and data', 'Apply stronger controls to sensitive resources and preserve evidence for investigation.', 'Admin routes and financial or fleet writes receive sensitivity scoring, adaptive outcomes, and persistent audit logs with the decision reason.']
 ];
 
 const flowSteps = [
@@ -137,9 +137,9 @@ export default function ProjectOverview({ onBack }: ProjectOverviewProps) {
         </section>
 
         <section className="bg-white border border-neutral-200 rounded-xl p-5 shadow-sm mt-6">
-          <h2 className="font-black text-lg flex items-center gap-2"><Settings2 className="w-5 h-5 text-cyan-700" /> Policy catalogue</h2>
-          <p className="text-sm text-neutral-600 mt-2">These seven controls are implemented in the live application and are reflected in the Trust Center and backend engine. They show how TransitOps combines RBAC, risk-aware access, and session integrity checks.</p>
-          <div className="overflow-x-auto mt-4"><table className="w-full text-left text-sm"><thead className="text-[10px] uppercase tracking-wider text-neutral-400 border-b border-neutral-200"><tr><th className="py-2 pr-4">Policy</th><th className="py-2 pr-4">What it protects</th><th className="py-2">Typical response</th></tr></thead><tbody>{policies.map(([name, description, response]) => <tr key={name} className="border-b border-neutral-100 last:border-0"><td className="py-3 pr-4 font-bold text-neutral-800 whitespace-nowrap">{name}</td><td className="py-3 pr-4 text-neutral-600">{description}</td><td className="py-3 text-xs font-black text-emerald-700 whitespace-nowrap">{response}</td></tr>)}</tbody></table></div>
+          <h2 className="font-black text-lg flex items-center gap-2"><Settings2 className="w-5 h-5 text-cyan-700" /> Universal Zero Trust policy catalogue</h2>
+          <p className="text-sm text-neutral-600 mt-2">These seven standard Zero Trust principles are implemented in the live application. The table connects each policy to its meaning and the TransitOps feature that achieves it.</p>
+          <div className="overflow-x-auto mt-4"><table className="w-full min-w-[50rem] text-left text-sm"><thead className="text-[10px] uppercase tracking-wider text-neutral-400 border-b border-neutral-200"><tr><th className="py-2 pr-4">Policy name</th><th className="py-2 pr-4">Meaning</th><th className="py-2">Feature implemented to achieve the policy</th></tr></thead><tbody>{policies.map(([name, meaning, feature]) => <tr key={name} className="border-b border-neutral-100 last:border-0 align-top"><td className="py-3 pr-4 font-bold text-neutral-800 whitespace-nowrap">{name}</td><td className="py-3 pr-4 text-neutral-600">{meaning}</td><td className="py-3 text-neutral-600">{feature}</td></tr>)}</tbody></table></div>
         </section>
 
         <div className="grid md:grid-cols-2 gap-6 mt-6">
