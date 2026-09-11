@@ -328,5 +328,11 @@
     "action": "User Sarah Jenkins logged in.",
     "user": "Sarah Jenkins",
     "timestamp": "2026-09-10T08:29:00.873Z"
+  },
+  {
+    "id": "al_1789044379996_493",
+    "action": "User ZTCA Admin (Super User) logged in.",
+    "user": "ZTCA Admin (Super User)",
+    "timestamp": "2026-09-10T12:46:19.996Z"
   }
 ]
