@@ -1,7 +1,7 @@
 {
   "functions": {
     "api/index.ts": {
-      "includeFiles": ["backend/data/**/*.json"]
+      "includeFiles": "backend/data/**/*.json"
     }
   },
   "rewrites": [
