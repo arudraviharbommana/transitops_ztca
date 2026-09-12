@@ -3,7 +3,14 @@ import path from 'path';
 import Database from 'better-sqlite3';
 
 const DATA_DIR = path.resolve(process.cwd(), 'backend', 'data');
-const DATABASE_PATH = process.env.TRANSITOPS_DB_PATH || path.join(DATA_DIR, 'transitops.db');
+const isServerlessRuntime = Boolean(
+  process.env.NETLIFY || process.env.AWS_LAMBDA_FUNCTION_NAME
+);
+const DATABASE_PATH = process.env.TRANSITOPS_DB_PATH || (
+  isServerlessRuntime
+    ? path.join('/tmp', 'transitops.db')
+    : path.join(DATA_DIR, 'transitops.db')
+);
 
 fs.mkdirSync(path.dirname(DATABASE_PATH), { recursive: true });
 

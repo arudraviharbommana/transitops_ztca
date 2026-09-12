@@ -219,7 +219,7 @@ This ensures the TransitOps platform remains robust, modular, and ready for prod
 
 The repository layer now uses SQLite through `backend/database.ts`. The first process startup creates the `records` table and imports each existing JSON file once when its collection is empty. After that, reads and writes use SQLite; the JSON files remain seed data and migration backups.
 
-By default the database is created at `backend/data/transitops.db`. Set `TRANSITOPS_DB_PATH` to choose another location:
+By default the database is created at `backend/data/transitops.db`. In Netlify Functions it is created under `/tmp`, because the deployed function bundle is read-only. Set `TRANSITOPS_DB_PATH` to choose another location:
 
 ```bash
 TRANSITOPS_DB_PATH=/var/lib/transitops/transitops.db npm start
