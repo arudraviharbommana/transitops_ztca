@@ -1,5 +1,538 @@
 [
   {
+    "timestamp": "2026-09-12T05:01:15.324Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-unknown-linux-rogue-007",
+      "deviceBrowser": "Firefox Nightly",
+      "deviceOS": "Linux x86_64",
+      "isKnownDevice": false,
+      "city": "Moscow",
+      "country": "Russia",
+      "lat": 55.7558,
+      "lng": 37.6173,
+      "isKnownLocation": false,
+      "isOddHours": true,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 80,
+      "level": "CRITICAL",
+      "factors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "STEP_UP",
+      "riskScore": 80,
+      "riskLevel": "CRITICAL",
+      "reason": "Policy Enforcement Triggered [High Risk Dispatch & Trip Scheduling Safeguard]: Context risk score (80) exceeds policy maximum allowed threshold (40).",
+      "policyTriggered": "pol_2_dispatch_stepup",
+      "riskFactors": [
+        {
+          "ruleId": "rf_unknown_device",
+          "name": "Unrecognized Device Fingerprint",
+          "score": 25,
+          "description": "Device fingerprint 'dev-unknown-linux-rogue-007' (Firefox Nightly on Linux x86_64) is not in user's trusted device registry."
+        },
+        {
+          "ruleId": "rf_location_anomaly",
+          "name": "Geographic Location Anomaly",
+          "score": 20,
+          "description": "Request originating from 'Moscow, Russia', which is outside user's registered home/work cities."
+        },
+        {
+          "ruleId": "rf_odd_hours",
+          "name": "Off-Hours Request Window",
+          "score": 15,
+          "description": "Activity detected outside normal operational hours (between 11:00 PM and 05:00 AM)."
+        },
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:01:15.324Z",
+      "stepUpChallenge": "VERIFY_PIN",
+      "simulation": true
+    },
+    "id": "ztca_1789189275325_2134"
+  },
+  {
+    "timestamp": "2026-09-12T05:01:09.999Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:01:09.998Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189270002_9027"
+  },
+  {
+    "timestamp": "2026-09-12T05:01:09.984Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Fleet Manager"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:01:09.984Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189269986_8436"
+  },
+  {
+    "timestamp": "2026-09-12T05:01:03.791Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:01:03.791Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189263793_1041"
+  },
+  {
+    "timestamp": "2026-09-12T05:01:03.780Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:01:03.780Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189263782_3573"
+  },
+  {
+    "timestamp": "2026-09-12T05:00:48.864Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:00:48.864Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189248867_5725"
+  },
+  {
+    "timestamp": "2026-09-12T05:00:48.588Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:00:48.587Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189248589_9814"
+  },
+  {
+    "timestamp": "2026-09-12T05:00:43.365Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:00:43.365Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189243367_2580"
+  },
+  {
+    "timestamp": "2026-09-12T05:00:43.336Z",
+    "user": {
+      "id": "u1",
+      "name": "Active Operator (SIMULATION)",
+      "email": "operator@transitops.com",
+      "role": "Admin"
+    },
+    "context": {
+      "deviceId": "dev-macbook-pro-sf-hq",
+      "deviceBrowser": "Chrome 124",
+      "deviceOS": "macOS",
+      "isKnownDevice": true,
+      "city": "San Francisco",
+      "country": "United States",
+      "lat": 37.7749,
+      "lng": -122.4194,
+      "isKnownLocation": true,
+      "isOddHours": false,
+      "simulation": true,
+      "endpoint": "/api/trips",
+      "method": "POST",
+      "actionName": "Dispatching Fleet Trip",
+      "requiredPrivilege": "DISPATCH_TRIP"
+    },
+    "risk": {
+      "totalScore": 20,
+      "level": "LOW",
+      "factors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ]
+    },
+    "decision": {
+      "outcome": "ALLOW",
+      "riskScore": 20,
+      "riskLevel": "LOW",
+      "reason": "Request validated successfully under continuous authorization policy (Risk: 20/100).",
+      "riskFactors": [
+        {
+          "ruleId": "rf_dispatch_sensitivity",
+          "name": "Vehicle Dispatch Operations",
+          "score": 20,
+          "description": "Action modifies active fleet dispatching, driver assignments, or trip status."
+        }
+      ],
+      "timestamp": "2026-09-12T05:00:43.336Z",
+      "simulation": true
+    },
+    "id": "ztca_1789189243338_5090"
+  },
+  {
     "timestamp": "2026-09-11T04:39:42.863Z",
     "user": {
       "id": "u1",

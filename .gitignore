@@ -6,3 +6,5 @@ coverage/
 *.log
 .env*
 !.env.example
+backend/data/*.db
+backend/data/*.db-*

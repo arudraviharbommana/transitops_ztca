@@ -1,6 +1,3 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
 import {
   User,
   Vehicle,
@@ -12,46 +9,10 @@ import {
   Notification,
   ActivityLog
 } from './types.js';
-
-const DATA_DIR = path.resolve(process.cwd(), 'backend', 'data');
-
-// Ensure data directory exists
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-class JSONDataSource<T extends { id: string }> {
-  private filePath: string;
-
-  constructor(fileName: string) {
-    this.filePath = path.join(DATA_DIR, fileName);
-    // Initialize file if it doesn't exist
-    if (!fs.existsSync(this.filePath)) {
-      fs.writeFileSync(this.filePath, JSON.stringify([], null, 2), 'utf-8');
-    }
-  }
-
-  public read(): T[] {
-    try {
-      const content = fs.readFileSync(this.filePath, 'utf-8');
-      return JSON.parse(content) as T[];
-    } catch (e) {
-      console.error(`Error reading database file: ${this.filePath}`, e);
-      return [];
-    }
-  }
-
-  public write(data: T[]): void {
-    try {
-      fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2), 'utf-8');
-    } catch (e) {
-      console.error(`Error writing database file: ${this.filePath}`, e);
-    }
-  }
-}
+import { DatabaseStore } from './database.js';
 
 export class UserRepository {
-  private db = new JSONDataSource<User>('users.json');
+  private db = new DatabaseStore<User>('users', 'users.json');
 
   public getAll(): User[] {
     return this.db.read();
@@ -87,7 +48,7 @@ export class UserRepository {
 }
 
 export class VehicleRepository {
-  private db = new JSONDataSource<Vehicle>('vehicles.json');
+  private db = new DatabaseStore<Vehicle>('vehicles', 'vehicles.json');
 
   public getAll(): Vehicle[] {
     return this.db.read();
@@ -131,7 +92,7 @@ export class VehicleRepository {
 }
 
 export class DriverRepository {
-  private db = new JSONDataSource<Driver>('drivers.json');
+  private db = new DatabaseStore<Driver>('drivers', 'drivers.json');
 
   public getAll(): Driver[] {
     return this.db.read();
@@ -175,7 +136,7 @@ export class DriverRepository {
 }
 
 export class TripRepository {
-  private db = new JSONDataSource<Trip>('trips.json');
+  private db = new DatabaseStore<Trip>('trips', 'trips.json');
 
   public getAll(): Trip[] {
     return this.db.read();
@@ -219,7 +180,7 @@ export class TripRepository {
 }
 
 export class MaintenanceRepository {
-  private db = new JSONDataSource<Maintenance>('maintenance.json');
+  private db = new DatabaseStore<Maintenance>('maintenance', 'maintenance.json');
 
   public getAll(): Maintenance[] {
     return this.db.read();
@@ -251,7 +212,7 @@ export class MaintenanceRepository {
 }
 
 export class FuelLogRepository {
-  private db = new JSONDataSource<FuelLog>('fuelLogs.json');
+  private db = new DatabaseStore<FuelLog>('fuelLogs', 'fuelLogs.json');
 
   public getAll(): FuelLog[] {
     return this.db.read();
@@ -268,7 +229,7 @@ export class FuelLogRepository {
 }
 
 export class ExpenseRepository {
-  private db = new JSONDataSource<Expense>('expenses.json');
+  private db = new DatabaseStore<Expense>('expenses', 'expenses.json');
 
   public getAll(): Expense[] {
     return this.db.read();
@@ -285,7 +246,7 @@ export class ExpenseRepository {
 }
 
 export class NotificationRepository {
-  private db = new JSONDataSource<Notification>('notifications.json');
+  private db = new DatabaseStore<Notification>('notifications', 'notifications.json');
 
   public getAll(): Notification[] {
     return this.db.read();
@@ -322,7 +283,7 @@ export class NotificationRepository {
 }
 
 export class ActivityLogRepository {
-  private db = new JSONDataSource<ActivityLog>('activityLogs.json');
+  private db = new DatabaseStore<ActivityLog>('activityLogs', 'activityLogs.json');
 
   public getAll(): ActivityLog[] {
     return this.db.read();

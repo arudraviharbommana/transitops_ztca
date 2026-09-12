@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import {
   PolicyRule,
   ZTCAAuditLog,
@@ -7,41 +5,7 @@ import {
   KnownLocation,
   ZTCAOutcome
 } from './types.js';
-
-const DATA_DIR = path.resolve(process.cwd(), 'backend', 'data');
-
-if (!fs.existsSync(DATA_DIR)) {
-  fs.mkdirSync(DATA_DIR, { recursive: true });
-}
-
-class JSONStore<T> {
-  private filePath: string;
-
-  constructor(fileName: string, initialData: T[]) {
-    this.filePath = path.join(DATA_DIR, fileName);
-    if (!fs.existsSync(this.filePath)) {
-      fs.writeFileSync(this.filePath, JSON.stringify(initialData, null, 2), 'utf-8');
-    }
-  }
-
-  public read(): T[] {
-    try {
-      const content = fs.readFileSync(this.filePath, 'utf-8');
-      return JSON.parse(content) as T[];
-    } catch (e) {
-      console.error(`Error reading ZTCA store: ${this.filePath}`, e);
-      return [];
-    }
-  }
-
-  public write(data: T[]): void {
-    try {
-      fs.writeFileSync(this.filePath, JSON.stringify(data, null, 2), 'utf-8');
-    } catch (e) {
-      console.error(`Error writing ZTCA store: ${this.filePath}`, e);
-    }
-  }
-}
+import { DatabaseStore } from '../database.js';
 
 // Initial Default Policies according to NIST 800-207 Zero Trust Architecture
 const DEFAULT_POLICIES: PolicyRule[] = [
@@ -169,7 +133,7 @@ const DEFAULT_KNOWN_LOCATIONS: KnownLocation[] = [
 ];
 
 export class ZTCAPolicyRepository {
-  private store = new JSONStore<PolicyRule>('ztcaPolicies.json', DEFAULT_POLICIES);
+  private store = new DatabaseStore<PolicyRule>('ztcaPolicies', 'ztcaPolicies.json');
 
   public getAll(): PolicyRule[] {
     return this.store.read();
@@ -210,7 +174,7 @@ export class ZTCAPolicyRepository {
 }
 
 export class ZTCAAuditRepository {
-  private store = new JSONStore<ZTCAAuditLog>('ztcaAuditLogs.json', []);
+  private store = new DatabaseStore<ZTCAAuditLog>('ztcaAuditLogs', 'ztcaAuditLogs.json');
 
   public getAll(): ZTCAAuditLog[] {
     return this.store.read().sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
@@ -234,7 +198,7 @@ export class ZTCAAuditRepository {
 }
 
 export class ZTCADeviceRepository {
-  private store = new JSONStore<KnownDevice>('ztcaDevices.json', DEFAULT_KNOWN_DEVICES);
+  private store = new DatabaseStore<KnownDevice>('ztcaDevices', 'ztcaDevices.json');
 
   public getAll(): KnownDevice[] {
     return this.store.read();
@@ -278,7 +242,7 @@ export class ZTCADeviceRepository {
 }
 
 export class ZTCALocationRepository {
-  private store = new JSONStore<KnownLocation>('ztcaLocations.json', DEFAULT_KNOWN_LOCATIONS);
+  private store = new DatabaseStore<KnownLocation>('ztcaLocations', 'ztcaLocations.json');
 
   public getAll(): KnownLocation[] {
     return this.store.read();

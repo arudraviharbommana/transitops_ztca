@@ -214,3 +214,15 @@ export class VehicleRepository {
 ```
 
 This ensures the TransitOps platform remains robust, modular, and ready for production-level scale in the future!
+
+## 4. Current SQLite Implementation
+
+The repository layer now uses SQLite through `backend/database.ts`. The first process startup creates the `records` table and imports each existing JSON file once when its collection is empty. After that, reads and writes use SQLite; the JSON files remain seed data and migration backups.
+
+By default the database is created at `backend/data/transitops.db`. Set `TRANSITOPS_DB_PATH` to choose another location:
+
+```bash
+TRANSITOPS_DB_PATH=/var/lib/transitops/transitops.db npm start
+```
+
+For Netlify, the function filesystem is ephemeral, so SQLite is suitable for local development and single-instance demonstrations but is not durable production storage. Set the repository layer to a managed PostgreSQL, Neon, Supabase, or Turso database before relying on cross-invocation persistence in production.
