@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ShieldCheck,
   Smartphone,
@@ -98,6 +98,7 @@ export default function ZTCAContextWidget({
   const [isExpanded, setIsExpanded] = useState(false);
   const [simulationResult, setSimulationResult] = useState<any>(null);
   const [loading, setLoading] = useState(false);
+  const lastSimulationSignatureRef = useRef<string | null>(null);
 
   // Dry run simulation to forecast risk score
   const runSimulationCheck = async () => {
@@ -142,8 +143,25 @@ export default function ZTCAContextWidget({
   };
 
   useEffect(() => {
+    const simulationSignature = JSON.stringify({
+      deviceId: context.deviceId,
+      deviceBrowser: context.deviceBrowser,
+      deviceOS: context.deviceOS,
+      city: context.city,
+      country: context.country,
+      lat: context.lat,
+      lng: context.lng,
+      isOddHours: context.isOddHours,
+      userRole
+    });
+
+    if (lastSimulationSignatureRef.current === simulationSignature) {
+      return;
+    }
+
+    lastSimulationSignatureRef.current = simulationSignature;
     runSimulationCheck();
-  }, [context, userRole]);
+  }, [context.deviceId, context.deviceBrowser, context.deviceOS, context.city, context.country, context.lat, context.lng, context.isOddHours, userRole]);
 
   const riskScore = simulationResult?.risk?.totalScore ?? 0;
   const outcome = simulationResult?.decision?.outcome ?? 'ALLOW';

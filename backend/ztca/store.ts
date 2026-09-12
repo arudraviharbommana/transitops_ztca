@@ -176,6 +176,26 @@ export class ZTCAPolicyRepository {
 export class ZTCAAuditRepository {
   private store = new DatabaseStore<ZTCAAuditLog>('ztcaAuditLogs', 'ztcaAuditLogs.json');
 
+  private buildRequestSignature(entry: Pick<ZTCAAuditLog, 'timestamp' | 'user' | 'context' | 'risk' | 'decision'>): string {
+    const timeBucketMs = 5000;
+    const bucketStart = Math.floor(new Date(entry.timestamp).getTime() / timeBucketMs) * timeBucketMs;
+
+    return JSON.stringify({
+      userId: entry.user.id,
+      endpoint: entry.context.endpoint,
+      method: entry.context.method,
+      actionName: entry.context.actionName,
+      deviceId: entry.context.deviceId,
+      city: entry.context.city,
+      country: entry.context.country,
+      isOddHours: entry.context.isOddHours,
+      requiredPrivilege: entry.context.requiredPrivilege,
+      outcome: entry.decision.outcome,
+      riskScore: entry.risk.totalScore,
+      bucketStart
+    });
+  }
+
   public getAll(): ZTCAAuditLog[] {
     return this.store.read().sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
   }
@@ -186,6 +206,13 @@ export class ZTCAAuditRepository {
       ...entry,
       id: `ztca_${Date.now()}_${Math.floor(Math.random() * 10000)}`
     };
+
+    const signature = this.buildRequestSignature(newLog);
+    const existing = list.find(log => this.buildRequestSignature(log) === signature);
+    if (existing) {
+      return existing;
+    }
+
     // Keep max 500 logs
     const updated = [newLog, ...list].slice(0, 500);
     this.store.write(updated);

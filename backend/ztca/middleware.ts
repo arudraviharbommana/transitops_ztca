@@ -103,8 +103,16 @@ export function ztcaAuthorizationMiddleware(req: Request, res: Response, next: N
   const risk = engine.evaluateRisk(context);
   const decision = engine.makeDecision(context, risk);
 
-  // Log Audit Entry to Persistent Storage
-  const auditLog = auditRepo.log({
+  // Dashboard polling reads are observations, not new user actions.
+  const isDashboardRead = req.method === 'GET' && (
+    path === '/api/admin/audit-logs' ||
+    path === '/api/admin/metrics' ||
+    path === '/api/admin/policies' ||
+    path === '/api/admin/devices' ||
+    path === '/api/admin/locations'
+  );
+
+  const auditLog = isDashboardRead ? null : auditRepo.log({
     timestamp: new Date().toISOString(),
     user: {
       id: userId,
@@ -142,7 +150,7 @@ export function ztcaAuthorizationMiddleware(req: Request, res: Response, next: N
       error: 'ZTCA_BLOCKED',
       message: decision.reason,
       decision,
-      auditLogId: auditLog.id
+      auditLogId: auditLog?.id
     });
     return;
   }
@@ -153,7 +161,7 @@ export function ztcaAuthorizationMiddleware(req: Request, res: Response, next: N
       message: decision.reason,
       decision,
       challenge: 'VERIFY_PIN',
-      auditLogId: auditLog.id
+      auditLogId: auditLog?.id
     });
     return;
   }
@@ -163,7 +171,7 @@ export function ztcaAuthorizationMiddleware(req: Request, res: Response, next: N
       error: 'ZTCA_READ_ONLY_MODE',
       message: 'Modification blocked: ZTCA security engine downgraded your session to Read-Only due to elevated context risk.',
       decision,
-      auditLogId: auditLog.id
+      auditLogId: auditLog?.id
     });
     return;
   }
