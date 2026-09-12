@@ -126,10 +126,10 @@ export default function ZTCAContextWidget({
       });
       const data = await res.json();
       setSimulationResult(data);
-      // Broadcast updated metrics so Admin Panel updates KPIs immediately
+      // Broadcast the complete event so the open Admin Panel updates immediately.
       try {
         const bc = new BroadcastChannel('ztca-updates');
-        bc.postMessage({ type: 'metrics', metrics: data.metrics });
+        bc.postMessage({ type: 'simulation-audit', auditLog: data.auditLog, metrics: data.metrics });
         bc.close();
       } catch (e) {
         // BroadcastChannel may not be available in all environments; ignore silently

@@ -321,6 +321,7 @@ router.post('/ztca/simulation/context-check', (req: Request, res: Response) => {
     risk,
     decision,
     auditLogId: simLog.id,
+    auditLog: simLog,
     // Also return updated metrics snapshot so frontends can update immediately
     metrics: (() => {
       const logsAll = ztcaAuditRepo.getAll();

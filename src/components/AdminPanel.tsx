@@ -411,7 +411,14 @@ export default function AdminPanel({ currentUser }: AdminPanelProps) {
       bc.onmessage = ev => {
         try {
           const msg = ev.data;
-          if (msg && msg.type === 'metrics' && msg.metrics) {
+          if (!msg) return;
+          if (msg.type === 'simulation-audit' && msg.auditLog) {
+            setAuditLogs(previousLogs => {
+              if (previousLogs.some(log => log.id === msg.auditLog.id)) return previousLogs;
+              return [msg.auditLog as ZTCAAuditLog, ...previousLogs];
+            });
+          }
+          if ((msg.type === 'metrics' || msg.type === 'simulation-audit') && msg.metrics) {
             setMetrics(msg.metrics);
           }
         } catch (e) {
