@@ -3,6 +3,9 @@
   publish = "dist"
   functions = "api"
 
+[functions]
+  included_files = ["backend/data/**/*.json"]
+
 [[redirects]]
   from = "/api/*"
   to = "/.netlify/functions/index/api/:splat"
